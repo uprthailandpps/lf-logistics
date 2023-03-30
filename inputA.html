@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input</title>
+    <style>
+        
+        body{
+            height: 100%;
+            width:100%;
+            background-color: aliceblue;
+        }
+
+        nav {
+            background-color: rgb(186, 223, 255);
+            height:60px;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav a {
+            margin: 5px 5px;
+            text-decoration: none;
+            color: #000;
+            font-family: Arial, Helvetica, sans-serif ;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-block;
+            padding: 15px 40px 0px;
+            border-radius: 50px;
+            height: 2em;
+            transition: background-color 0.3s ease-in-out;
+        }
+   
+        nav a:hover {
+            background-color: rgb(55, 135, 255);
+            color: #fff;
+        }
+
+        form{
+            background-color: white;
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            width:fit-content;
+            padding: 10px 40px 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 7px #888888;
+        }
+    
+        label{
+            display: block;
+            margin-top: 1em;
+            margin-bottom: 0.25em;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+        }
+
+        input, select, option{
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            height: 1.75em;
+            width: 250px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            
+        }
+
+        button{
+            height: 35px;
+            width: 255px;
+            border-radius: 5px;
+            border: 1px solid  rgb(55, 135, 255);
+            background-color:  rgb(55, 135, 255);
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            display:block;
+            margin-block: 20px;
+            padding:5px;
+        }
+    
+        button:hover{
+            border: 2px solid black;
+        }
+
+    </style>
+    
+</head>
+<body>
+
+    <header>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="inputA.html">Input</a>
+          <a href="recordA.html">Record</a>
+          <a href="inventory.html">Inventory</a>
+          <a href="rental-fee.html">Rental Fee</a>
+        </nav>
+    </header>
+
+
+    <form action="https://script.google.com/macros/s/AKfycbyL1Q0B7Ljlda8Gtl7W6PCuleURbZ_XHiUxI97RgI0lNF9oba6wj1Nw9ORItSCHhxSDNg/exec" method="POST" onsubmit="submitForm(event)">
+      <input type="hidden" name="form" value="form-a">
+      <label for="date">Transfer date *</label>
+      <input type="date" name="date" id="date" required="">
+      <label for="origin">Origin *</label>
+      <select name="origin" id="origin" required="">
+          <option value="Warehouse A">Warehouse A</option>
+      </select>
+      <label for="destination">Destination *</label>
+      <select name="destination" id="destination" required="">
+          <option value="Warehouse B"> Warehouse B</option>
+          <option value="Warehouse C"> Warehouse C</option>
+      </select>
+      <label for="item">Item *</label>
+      <select name="item" id="item" required="">
+          <option value="Wooden Pallet 4-way">Wooden Pallet 4-way</option>
+      </select>
+      <label for="quantity">Quantity *</label>
+      <input type="number" name="quantity" id="quantity" required="">
+      <label for="reference">Reference (DO)</label>
+      <input type="text" name="reference" id="reference">
+      <label for="transporter">Transporter</label>
+      <input type="text" name="transporter" id="transporter">
+      <label for="truck">Truck ID</label>
+      <input type="text" name="truck" id="truck">
+      <label for="record">Name Record *</label>
+      <input type="text" name="record" id="record" required="">
+      <button type="submit">Submit</button>
+  </form>
+  
+
+<script src="https://apis.google.com/js/api.js"></script>
+<script>
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0');
+  var yyyy = today.getFullYear();
+  var todayString = yyyy + '-' + mm + '-' + dd;
+
+  document.getElementById('date').value = todayString;
+
+  function submitForm(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+  
+    var requiredFields = document.querySelectorAll('[required]');
+    for (var i = 0; i < requiredFields.length; i++) {
+      if (!requiredFields[i].value) {
+        alert('Please fill all required fields');
+        return;
+      }
+    }
+  
+    var form = event.target;
+    var formData = new FormData(form);
+  
+    fetch(form.action, {
+      method: form.method,
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        response.text().then(() => {
+          alert('Form submitted successfully. Please wait while your slip in being generated.');
+          window.open('	https://docs.google.com/spreadsheets/d/1UzlwdwBUt66_rnJmeMLEnrLZZMO_zZAxqL_mvlDMt8s/export?exportFormat=pdf&format=pdf&size=a4&portrait=false&scale=4&top_margin=0.10&bottom_margin=0.10&left_margin=0.10&right_margin=0.10&horizontal_alignment=CENTER&vertical_alignment=CENTER&gid=832928354&access_token=ya29.a0Ael9sCNsJfOhwvkTgH2eV90WCLBEokduKttsM856cRXbQ0pYhrSabDSSJ1gHSZFlDizWNsi1a3DqO52j4EfuJ3WX4TV26Y1nQEpwOEs4M0uZ_gzq0YHBuCYdbW7AfC2jVKFDCrxAkgzl-Nnbp84AyhJEaE5UQuiGQO6xqfMaCgYKAccSARISFQF4udJh835Zdx3rR78sXGBcHpegZg0174', '_blank', 'height=500,width=500');
+        })
+    .catch(error => {
+      console.error('Error submitting the form: ', error);
+      alert('There was a problem submitting the form.');
+    });
+  }})}
+</script>
+
+</body>
+</html>
