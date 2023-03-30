@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPR Thailand PPs</title>
+    <style>
+        h1{
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        form{
+            background-color: white;
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            width:fit-content;
+            padding: 10px 40px 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 7px #888888;
+        }
+    
+        label{
+            display: block;
+            margin-top: 1em;
+            margin-bottom: 0.25em;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+        }
+
+        input, select, option{
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            height: 1.75em;
+            width: 250px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            
+        }
+
+        button{
+            height: 35px;
+            width: 255px;
+            border-radius: 5px;
+            border: 1px solid  rgb(55, 135, 255);
+            background-color:  rgb(55, 135, 255);
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            display:block;
+            margin-block: 20px;
+            padding:5px;
+        }
+    
+        button:hover{
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to UPR Thailand Pallet Pooling System</h1>
+    <form id="login-form">
+        <label>Customer code:</label>
+        <input type="text" id="customer-code">
+        <label>Password:</label>
+        <input type="password" id="password">
+        <button type="submit">Log in</button>
+      </form>
+
+      <script>
+        const users = {
+          // Replace the following example data with your own user data
+          'A': {
+            'password': '123',
+            'pageUrl': 'https://finnmesa.github.io/pps/inputA.html'
+          },
+          'B': {
+            'password': '456',
+            'pageUrl': 'https://finnmesa.github.io/pps/inputB.html'
+          },
+          'C': {
+            'password': '789',
+            'pageUrl': 'https://finnmesa.github.io/pps/inputC.html'
+          },
+          // Add more users as needed
+        };
+      
+        const loginForm = document.getElementById('login-form');
+        loginForm.addEventListener('submit', function(event) {
+          event.preventDefault(); // prevent form submission
+      
+          const customerCode = document.getElementById('customer-code').value;
+          const password = document.getElementById('password').value;
+      
+          if(users[customerCode] && users[customerCode].password === password) {
+            // Set a cookie to maintain the user's session
+            document.cookie = `loggedInUser=${customerCode}; max-age=1800;`;
+      
+            // Redirect the user to their page
+            window.location.href = users[customerCode].pageUrl;
+          } else {
+            alert('Invalid customer code or password');
+          }
+        });
+      </script>
+      
+      
+</body>
+</html>
