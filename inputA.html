@@ -5,17 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Input</title>
-    <style>
-        
+        <style>
         body{
             height: 100%;
             width:100%;
-            background-color: aliceblue;
+            background-color: fff;
+        }
+
+        header {
+          position: fixed; /* Set the header to be fixed */
+          top: 0; /* Set the header to the top of the viewport */
+          left: 0;
+          width: 100%; /* Make the header span the full width of the viewport */
+          background-color: #fff;
+          height:80px;
+        }
+
+        main{
+          margin-top: 80px
+        }
+
+        section{
+          height : 800px;
+        }
+
+        #input-section{
+          padding-top: 5px;
+          background-color: #f3f1eb;
         }
 
         nav {
-            background-color: rgb(186, 223, 255);
-            height:60px;
+            margin-top: 12px;
             display: flex;
             justify-content: center;
         }
@@ -23,20 +43,23 @@
         nav a {
             margin: 5px 5px;
             text-decoration: none;
-            color: #000;
+            color: #fff;
             font-family: Arial, Helvetica, sans-serif ;
             font-weight: bold;
             text-transform: uppercase;
             display: inline-block;
+            width: 120px;
+            text-align: center;
             padding: 15px 40px 0px;
             border-radius: 50px;
             height: 2em;
+            background-color: #e47011;
             transition: background-color 0.3s ease-in-out;
         }
    
         nav a:hover {
-            background-color: rgb(55, 135, 255);
-            color: #fff;
+            background-color: #f3f1eb;
+            color: #000;
         }
 
         form{
@@ -65,15 +88,14 @@
             width: 250px;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 14px;
-            
         }
 
         button{
             height: 35px;
             width: 255px;
             border-radius: 5px;
-            border: 1px solid  rgb(55, 135, 255);
-            background-color:  rgb(55, 135, 255);
+            border: 1px solid  #e47011;
+            background-color:  #e47011;
             color: white;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 14px;
@@ -84,9 +106,11 @@
         }
     
         button:hover{
-            border: 2px solid black;
+          border: 1px solid  #19709b;
+          background-color:  #19709b;
         }
         
+
         iframe{
         display:block; 
         margin-left: auto; 
@@ -94,7 +118,7 @@
         margin-top: 20px;
         margin-bottom: 0px; 
         width:95%; 
-        height:89%
+        height:800px
       }
 
     </style>
