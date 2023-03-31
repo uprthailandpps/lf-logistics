@@ -7,16 +7,36 @@
     <title>Input</title>
     <link rel="shortcut icon" type="image/x-icon" href="data:image/x-icon;,">
     <style>
-        
         body{
             height: 100%;
             width:100%;
-            background-color: aliceblue;
+            background-color: fff;
+        }
+
+        header {
+          position: fixed; /* Set the header to be fixed */
+          top: 0; /* Set the header to the top of the viewport */
+          left: 0;
+          width: 100%; /* Make the header span the full width of the viewport */
+          background-color: #fff;
+          height:80px;
+        }
+
+        main{
+          margin-top: 80px
+        }
+
+        section{
+          height : 800px;
+        }
+
+        #input-section{
+          padding-top: 5px;
+          background-color: #f3f1eb;
         }
 
         nav {
-            background-color: rgb(186, 223, 255);
-            height:60px;
+            margin-top: 12px;
             display: flex;
             justify-content: center;
         }
@@ -24,20 +44,23 @@
         nav a {
             margin: 5px 5px;
             text-decoration: none;
-            color: #000;
+            color: #fff;
             font-family: Arial, Helvetica, sans-serif ;
             font-weight: bold;
             text-transform: uppercase;
             display: inline-block;
+            width: 120px;
+            text-align: center;
             padding: 15px 40px 0px;
             border-radius: 50px;
             height: 2em;
+            background-color: #e47011;
             transition: background-color 0.3s ease-in-out;
         }
    
         nav a:hover {
-            background-color: rgb(55, 135, 255);
-            color: #fff;
+            background-color: #f3f1eb;
+            color: #000;
         }
 
         form{
@@ -66,15 +89,14 @@
             width: 250px;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 14px;
-            
         }
 
         button{
             height: 35px;
             width: 255px;
             border-radius: 5px;
-            border: 1px solid  rgb(55, 135, 255);
-            background-color:  rgb(55, 135, 255);
+            border: 1px solid  #e47011;
+            background-color:  #e47011;
             color: white;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 14px;
@@ -85,25 +107,34 @@
         }
     
         button:hover{
-            border: 2px solid black;
+          border: 1px solid  #19709b;
+          background-color:  #19709b;
         }
+        
+
+        iframe{
+        display:block; 
+        margin-left: auto; 
+        margin-right: auto; 
+        margin-top: 20px;
+        margin-bottom: 0px; 
+        width:95%; 
+        height:800px
+      }
 
     </style>
     
 </head>
 <body>
-
     <header>
         <nav>
-          <a href="index.html">Home</a>
-          <a href="inputB.html">Input</a>
-          <a href="recordB.html">Record</a>
-          <a href="inventory.html">Inventory</a>
-          <a href="rental-fee.html">Rental Fee</a>
+          <a href="#input-section">Input</a>
+          <a href="#dashboard-section">Dashboard</a>
         </nav>
-    </header>
+      </header>
 
-
+<main>
+  <section id="input-section">
     <form action="https://script.google.com/macros/s/AKfycbyL1Q0B7Ljlda8Gtl7W6PCuleURbZ_XHiUxI97RgI0lNF9oba6wj1Nw9ORItSCHhxSDNg/exec" method="POST" onsubmit="submitForm(event)">
       <input type="hidden" name="form" value="form-b">
       <label for="date">Transfer date *</label>
@@ -133,7 +164,13 @@
       <input type="text" name="record" id="record" required="">
       <button type="submit">Submit</button>
   </form>
-  
+  </section>
+    
+<section id="dashboard-section">
+    <iframe frameborder="0" scrolling="yes" src="https://docs.google.com/spreadsheets/d/1xQIHewi8XSHNKCR_iFZ7T_-KXBAT1jn9_tq8f87rJeQ/edit?usp=sharing&amp;rm=minimal&amp;;widget=false&amp;chrome=false" allowfullscreen="">
+    </iframe>
+    </section>
+</main>
 
 <script src="https://apis.google.com/js/api.js"></script>
     <script>
@@ -162,7 +199,25 @@
           return;
         }
       }
+
+    document.querySelectorAll('.nav a').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
     
+    const target = document.querySelector(this.getAttribute('href'));
+    target.scrollIntoView({
+      behavior: 'smooth'
+    });
+    
+    document.querySelectorAll('.nav a').forEach(anchor => {
+      anchor.classList.remove('active');
+    });
+    
+    this.classList.add('active');
+  });
+});
+      
+        
       var form = event.target;
       var formData = new FormData(form);
     
