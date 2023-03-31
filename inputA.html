@@ -200,7 +200,7 @@
         }
       }
         
-   document.querySelectorAll('.vertical-nav a').forEach(anchor => {
+   document.querySelectorAll('.nav a').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
     
@@ -209,7 +209,7 @@
       behavior: 'smooth'
     });
     
-    document.querySelectorAll('.vertical-nav a').forEach(anchor => {
+    document.querySelectorAll('.nav a').forEach(anchor => {
       anchor.classList.remove('active');
     });
     
