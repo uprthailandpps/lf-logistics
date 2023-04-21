@@ -4,16 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPR Thailand PPs</title>
+    <title>UPR Thailand PPS</title>
     <style>
-        h1{
-            text-align: center;
-            margin-top: 50px;
+      body{
+        background-color: #f3f1eb;
+      }
+        #div-logo{
+          margin-top: 30px;
+          display: flex;
+          justify-content: center;
         }
-        
+        #div-greeting{
+          margin-top: 20px;
+        }
+          h1{
+              text-align: center;
+              font-family: Arial, Helvetica, sans-serif;
+              margin: 0px;
+              font-size: 40px;
+              line-height: 30px;
+              font-weight: 500;
+          }
+          h2{
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0px;
+            line-height: 60px;
+            font-size: 26px;
+            font-weight: 400;
+          }
         form{
-            background-color: white;
-            margin-top: 50px;
+            background-color: #f3f1eb;
+            margin-top: 40px;
             margin-left: auto;
             margin-right: auto;
             width:fit-content;
@@ -31,7 +53,8 @@
         }
 
         input, select, option{
-            border: 1px solid #ccc;
+            border: 1px solid #9e9797;
+            background-color: #f3f1eb;
             border-radius: 5px;
             height: 1.75em;
             width: 250px;
@@ -56,12 +79,17 @@
         }
     
         button:hover{
-            border: 2px solid black;
+            border: 1px solid #ff9c4a;
+            background-color: #ff9c4a;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to UPR Thailand Pallet Pooling System</h1>
+    <div id="div-logo"><img src="logo.png" height="40px"></div>
+    <div id="div-greeting">
+      <h1>Pallet Pooling System</h1>
+      <h2>by UPR (Thailand) Co., Ltd.</h2>
+    </div>
     <form id="login-form">
         <label>Customer code:</label>
         <input type="text" id="customer-code">
@@ -69,44 +97,33 @@
         <input type="password" id="password">
         <button type="submit">Log in</button>
       </form>
-
-      <script>
-        const users = {
-          // Replace the following example data with your own user data
-          'A': {
-            'password': '123',
-            'pageUrl': 'https://finnmesa.github.io/pps/warehouse-a.html'
-          },
-          'B': {
-            'password': '456',
-            'pageUrl': 'https://finnmesa.github.io/pps/warehouse-b.html'
-          },
-          'C': {
-            'password': '789',
-            'pageUrl': 'https://finnmesa.github.io/pps/warehouse-c.html'
-          },
-          // Add more users as needed
-        };
-      
-        const loginForm = document.getElementById('login-form');
-        loginForm.addEventListener('submit', function(event) {
-          event.preventDefault(); // prevent form submission
-      
-          const customerCode = document.getElementById('customer-code').value;
-          const password = document.getElementById('password').value;
-      
-          if(users[customerCode] && users[customerCode].password === password) {
-            // Set a cookie to maintain the user's session
-            document.cookie = `loggedInUser=${customerCode}; max-age=1800;`;
-      
-            // Redirect the user to their page
-            window.location.href = users[customerCode].pageUrl;
-          } else {
-            alert('Invalid customer code or password');
-          }
-        });
-      </script>
-      
-      
+  <script>
+    const users = {
+      'A': {
+        'password': '123',
+        'pageUrl': 'https://finnmesa.github.io/pps/warehouse-a.html'
+      },
+      'B': {
+        'password': '456',
+        'pageUrl': 'https://finnmesa.github.io/pps/warehouse-b.html'
+      },
+      'C': {
+        'password': '789',
+        'pageUrl': 'https://finnmesa.github.io/pps/warehouse-c.html'
+      },
+    };
+    const loginForm = document.getElementById('login-form');
+    loginForm.addEventListener('submit', function(event) {
+      event.preventDefault(); 
+      const customerCode = document.getElementById('customer-code').value;
+      const password = document.getElementById('password').value;
+      if(users[customerCode] && users[customerCode].password === password) {
+        document.cookie = `loggedInUser=${customerCode}; max-age=1800;`;
+        window.location.href = users[customerCode].pageUrl;
+      } else {
+        alert('Invalid customer code or password');
+      }
+    });
+  </script>
 </body>
 </html>
