@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design</title>
+    <title>Warehouse C</title>
     <style>
         h2{
             font-family: Arial, Helvetica, sans-serif;
@@ -198,7 +198,7 @@
                 <div id="div-form-section-left">
                     <img src="form.png" style="height: 50px;margin-top: 20px;margin-left: 30px;margin-bottom: 20px;">
                     <div id="div-form">
-                        <form action="https://script.google.com/macros/s/AKfycbyL1Q0B7Ljlda8Gtl7W6PCuleURbZ_XHiUxI97RgI0lNF9oba6wj1Nw9ORItSCHhxSDNg/exec" method="POST" onsubmit="submitForm(event)">
+                        <form action="https://script.google.com/macros/s/AKfycbzttIq8XPl5qtaEKqpjrTWdj8Ax-sW9_ywWTJ4758-AoRhmeo_ky4voMCbRnR7aL45qxg/exec" method="POST" onsubmit="submitForm(event)">
                             <input type="hidden" name="form" value="form-a">
                             <label for="date">Transfer date *</label>
                             <input type="date" name="date" id="date" required="">
@@ -229,36 +229,6 @@
                         </form>
                     </div>
                 </div>
-                    <!-- <form id="receive" action="https://script.google.com/macros/s/AKfycbyL1Q0B7Ljlda8Gtl7W6PCuleURbZ_XHiUxI97RgI0lNF9oba6wj1Nw9ORItSCHhxSDNg/exec" method="POST" onsubmit="submitForm(event)">
-                        <h2>IN FORM</h2>
-                        <input type="hidden" name="form" value="form-c">
-                        <label for="date">Transfer date *</label>
-                        <input type="date" name="date" id="date" required="">
-                        <label for="origin">Origin *</label>
-                        <select name="origin" id="origin" required="">
-                            <option value="Warehouse B"> Warehouse B</option>
-                            <option value="Warehouse C"> Warehouse C</option>
-                        </select>
-                        <label for="destination">Destination *</label>
-                        <select name="destination" id="destination" required="">
-                            <option value="Warehouse A">Warehouse A</option>
-                        </select>
-                        <label for="item">Item *</label>
-                        <select name="item" id="item" required="">
-                            <option value="Wooden Pallet 4-way">Wooden Pallet 4-way</option>
-                        </select>
-                        <label for="quantity">Quantity *</label>
-                        <input type="number" name="quantity" id="quantity" required="">
-                        <label for="reference">Reference (DO)</label>
-                        <input type="text" name="reference" id="reference">
-                        <label for="transporter">Transporter</label>
-                        <input type="text" name="transporter" id="transporter">
-                        <label for="truck">Truck ID</label>
-                        <input type="text" name="truck" id="truck">
-                        <label for="record">Name Record *</label>
-                        <input type="text" name="record" id="record" required="">
-                        <button type="submit">Submit</button>
-                    </form> -->
             <div id="div-form-section-right">
                 <img src="filler.png" style="display: inline-block;width: auto;height: 100%;">
             </div> 
@@ -278,49 +248,49 @@
                     window.location.href = 'https://finnmesa.github.io/pps/';
                 } else {
                     
-                function submitForm(event) {
-                event.preventDefault();
-                var requiredFields = document.querySelectorAll('[required]');
-                for (var i = 0; i < requiredFields.length; i++) {
+                  function submitForm(event) {
+                  event.preventDefault();
+                  var requiredFields = document.querySelectorAll('[required]');
+                  for (var i = 0; i < requiredFields.length; i++) {
                     if (!requiredFields[i].value) {
-                    alert('Please fill all required fields');
-                    return;
+                      alert('Please fill all required fields');
+                      return;
                     }
-                }
-                document.querySelectorAll('.nav a').forEach(anchor => {
+                  }
+                  document.querySelectorAll('.nav a').forEach(anchor => {
                     anchor.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        const target = document.querySelector(this.getAttribute('href'));
-                        target.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                        document.querySelectorAll('.nav a').forEach(anchor => {
-                            anchor.classList.remove('active');
-                        });
-                        this.classList.add('active');
+                      e.preventDefault();
+                      const target = document.querySelector(this.getAttribute('href'));
+                      target.scrollIntoView({
+                        behavior: 'smooth'
+                      });
+                      document.querySelectorAll('.nav a').forEach(anchor => {
+                        anchor.classList.remove('active');
+                      });
+                      this.classList.add('active');
                     });
-                });
-                var form = event.target;
-                var formData = new FormData(form);
-                fetch(form.action, {
+                  });
+                  var form = event.target;
+                  var formData = new FormData(form);
+                  fetch(form.action, {
                     method: form.method,
                     body: formData
-                })
-                .then(response => {
-                    if (response.ok) {
-                    response.text().then(() => {
-                        form.reset();
-                        document.getElementById('date').value = todayString;
-                        alert('Form submitted successfully. Please wait while your slip in being generated.');
-                        window.open('https://docs.google.com/spreadsheets/d/1UzlwdwBUt66_rnJmeMLEnrLZZMO_zZAxqL_mvlDMt8s/export?exportFormat=pdf&format=pdf&size=a4&portrait=false&scale=4&top_margin=0.50&bottom_margin=0.10&left_margin=0.10&right_margin=0.10&horizontal_alignment=CENTER&vertical_alignment=CENTER&gid=832928354&access_token=ya29.a0Ael9sCNsJfOhwvkTgH2eV90WCLBEokduKttsM856cRXbQ0pYhrSabDSSJ1gHSZFlDizWNsi1a3DqO52j4EfuJ3WX4TV26Y1nQEpwOEs4M0uZ_gzq0YHBuCYdbW7AfC2jVKFDCrxAkgzl-Nnbp84AyhJEaE5UQuiGQO6xqfMaCgYKAccSARISFQF4udJh835Zdx3rR78sXGBcHpegZg0174', '_blank', 'height=500,width=500');
-                    });
-                    } else {
-                    throw new Error('Network response was not ok');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error submitting the form: ', error);
-                    alert('There was a problem submitting the form.');
+                  })
+                    .then(response => {
+                      if (response.ok) {
+                        response.text().then(() => {
+                          form.reset();
+                          document.getElementById('date').valueAsDate = new Date();
+                          alert('Form submitted successfully. Please wait while your slip in being generated.');
+                          window.open('https://docs.google.com/spreadsheets/d/1UzlwdwBUt66_rnJmeMLEnrLZZMO_zZAxqL_mvlDMt8s/export?exportFormat=pdf&format=pdf&size=a4&portrait=false&scale=4&top_margin=0.50&bottom_margin=0.10&left_margin=0.10&right_margin=0.10&horizontal_alignment=CENTER&vertical_alignment=CENTER&gid=832928354&access_token=ya29.a0Ael9sCNsJfOhwvkTgH2eV90WCLBEokduKttsM856cRXbQ0pYhrSabDSSJ1gHSZFlDizWNsi1a3DqO52j4EfuJ3WX4TV26Y1nQEpwOEs4M0uZ_gzq0YHBuCYdbW7AfC2jVKFDCrxAkgzl-Nnbp84AyhJEaE5UQuiGQO6xqfMaCgYKAccSARISFQF4udJh835Zdx3rR78sXGBcHpegZg0174', '_blank', 'height=500,width=500');
+                        });
+                      } else {
+                        throw new Error('Network response was not ok');
+                      }
+                    })
+                    .catch(error => {
+                      console.error('Error submitting the form: ', error);
+                      alert('There was a problem submitting the form.');
                     });
                 }
             }
