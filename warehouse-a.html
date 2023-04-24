@@ -245,8 +245,11 @@
 
                 var loggedInUser = getCookie('loggedInUser');
                 if (!loggedInUser) {
-                    alert('You need to log in first.');
-                    window.location.href = 'https://finnmesa.github.io/pps/';
+                  alert('You need to log in first.');
+                  window.location.href = 'https://finnmesa.github.io/pps/';
+                } else if (window.location.href !== users[loggedInUser].pageUrl) {
+                  alert('You are not authorized to access this page.');
+                  window.location.href = users[loggedInUser].pageUrl;
                 } else {
                     
                 function submitForm(event) {
