@@ -241,6 +241,10 @@
                 var yyyy = today.getFullYear();
                 var todayString = yyyy + '-' + mm + '-' + dd;
                 document.getElementById('date').value = todayString;
+                
+                if (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                  document.getElementById("div-form-section-right").style.display = "none";
+                }
 
                 var loggedInUser = getCookie('loggedInUser');
                 if (!loggedInUser) {
