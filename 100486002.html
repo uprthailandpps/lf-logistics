@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test5</title>
+    <title>General</title>
     <style>
         body {
         display: flex;
@@ -149,20 +149,29 @@
     rightDiv.classList.toggle("expanded");
     });
 
-// Get the current date
-var currentDate = new Date();
-
-// Format the date as yyyy-mm-dd
-var formattedDate = currentDate.toISOString().split('T')[0];
-
-// Replace the existing date in the prefilled link with the current date
-var prefilledLink = 'https://docs.google.com/forms/d/e/1FAIpQLScqXGVPb9S5UEs-5fz8-r4MQJejHytrj__kbyEX1p0gC0qplQ/viewform?usp=pp_url&entry.1725689597=' + formattedDate + '&entry.1071237925=%E0%B9%80%E0%B8%88%E0%B9%80%E0%B8%99%E0%B8%AD%E0%B8%A3%E0%B8%B1%E0%B8%A5+(General)&entry.1250117939=%E0%B8%A2%E0%B8%B9%E0%B8%99%E0%B8%B4%E0%B9%82%E0%B8%84%E0%B8%A5%E0%B9%88+(Uniqlo)&entry.1081577797=%E0%B8%9E%E0%B8%B2%E0%B9%80%E0%B8%A5%E0%B8%97%E0%B9%84%E0%B8%A1%E0%B9%89+4+%E0%B8%97%E0%B8%B2%E0%B8%87';
-
-// Get the iframe element
-var iframe = document.getElementById('form');
-
-// Update the src attribute of the iframe
-iframe.src = prefilledLink;
+    var currentDate = new Date();
+    var formattedDate = currentDate.toISOString().split('T')[0];
+    var prefilledLink = 'https://docs.google.com/forms/d/e/1FAIpQLScqXGVPb9S5UEs-5fz8-r4MQJejHytrj__kbyEX1p0gC0qplQ/viewform?usp=pp_url&entry.1725689597=' + formattedDate + '&entry.1071237925=%E0%B9%80%E0%B8%88%E0%B9%80%E0%B8%99%E0%B8%AD%E0%B8%A3%E0%B8%B1%E0%B8%A5+(General)&entry.1250117939=%E0%B8%A2%E0%B8%B9%E0%B8%99%E0%B8%B4%E0%B9%82%E0%B8%84%E0%B8%A5%E0%B9%88+(Uniqlo)&entry.1081577797=%E0%B8%9E%E0%B8%B2%E0%B9%80%E0%B8%A5%E0%B8%97%E0%B9%84%E0%B8%A1%E0%B9%89+4+%E0%B8%97%E0%B8%B2%E0%B8%87';
+    var iframe = document.getElementById('form');
+    iframe.src = prefilledLink;
+      
+    if (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                  document.getElementById("right").style.display = "none";
+                }
+    
+    var loggedInUser = getCookie('loggedInUser');
+                if (!loggedInUser) {
+                    alert('You need to log in first.');
+                    window.location.href = 'https://uprthailandpps.github.io/kuehne-negel/';
+                }
+    
+    function getCookie(name) {
+                    var value = '; ' + document.cookie;
+                    var parts = value.split('; ' + name + '=');
+                    if (parts.length == 2) {
+                    return parts.pop().split(';').shift();
+                    }
+                }
 
   </script>
 </body>
