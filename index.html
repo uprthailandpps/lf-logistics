@@ -98,6 +98,14 @@
         <button type="submit">Log in</button>
       </form>
   <script>
+      if (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+  document.getElementById("div-greeting").style.marginTop = "28px";
+  document.getElementsByTagName("h1")[0].style.fontSize = "30px";
+  document.getElementsByTagName("h1")[0].style.lineHeight = "4px";
+  document.getElementsByTagName("h2")[0].style.fontSize = "18px";
+  document.getElementById("login-form").style.marginTop = "16px";
+}
+
     const users = {
       'uniqlo': {
         'password': '1234',
