@@ -161,19 +161,12 @@
                   document.getElementById("left").style.width = "100%";
                 }
     
-    var loggedInUser = getCookie('loggedInUser');
-                if (!loggedInUser) {
+    var allowedRedirectURL = 'https://uprthailandpps.github.io/kuehne-negel/';
+                if (document.referrer !== allowedRedirectURL) {
                     alert('You need to log in first.');
-                    window.location.href = 'https://uprthailandpps.github.io/kuehne-negel/';
+                    window.location.href = allowedRedirectURL;
                 }
-    
-    function getCookie(name) {
-                    var value = '; ' + document.cookie;
-                    var parts = value.split('; ' + name + '=');
-                    if (parts.length == 2) {
-                    return parts.pop().split(';').shift();
-                    }
-                }
+   
 
   </script>
 </body>
