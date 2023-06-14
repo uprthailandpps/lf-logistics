@@ -5,129 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UPR Thailand PPS</title>
-    <style>
-      body{
-        background-color: white;
-      }
-        #div-logo{
-          margin-top: 30px;
-          display: flex;
-          justify-content: center;
-        }
-        #div-greeting{
-          margin-top: 20px;
-        }
-          h1{
-              text-align: center;
-              font-family: Arial, Helvetica, sans-serif;
-              margin: 0px;
-              font-size: 40px;
-              line-height: 30px;
-              font-weight: 500;
-          }
-          h2{
-            text-align: center;
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 0px;
-            line-height: 60px;
-            font-size: 26px;
-            font-weight: 400;
-          }
-        form{
-            background-color: white;
-            margin-top: 40px;
-            margin-left: auto;
-            margin-right: auto;
-            width:fit-content;
-            padding: 10px 40px 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 7px #888888;
-        }
-    
-        label{
-            display: block;
-            margin-top: 1em;
-            margin-bottom: 0.25em;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 14px;
-        }
-
-        input, select, option{
-            border: 1px solid #9e9797;
-            background-color: #E1E1E2;
-            border-radius: 5px;
-            height: 1.75em;
-            width: 250px;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 14px;
-            
-        }
-
-        button{
-            height: 35px;
-            width: 255px;
-            border-radius: 5px;
-            border: 1px solid  #e47011;
-            background-color:  #e47011;
-            color: white;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 14px;
-            font-weight: bold;
-            display:block;
-            margin-block: 20px;
-            padding:5px;
-        }
-    
-        button:hover{
-            border: 1px solid #ff9c4a;
-            background-color: #ff9c4a;
-        }
-    </style>
+      <style>
+    body{
+      width:100%;
+      height: 100vh;
+    }
+    iframe{
+      width:100%;
+      height: 100%;
+    }
+  </style>
 </head>
 <body>
-    <div id="div-logo"><img src="logo.png" height="40px"></div>
-    <div id="div-greeting">
-      <h1>Pallet Pooling System</h1>
-      <h2>by UPR (Thailand) Co., Ltd.</h2>
-    </div>
-    <form id="login-form">
-        <label>Customer code:</label>
-        <input type="text" id="customer-code">
-        <label>Password:</label>
-        <input type="password" id="password">
-        <button type="submit">Log in</button>
-      </form>
-  <script>
-      if (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-  document.getElementById("div-greeting").style.marginTop = "28px";
-  document.getElementsByTagName("h1")[0].style.fontSize = "30px";
-  document.getElementsByTagName("h1")[0].style.lineHeight = "4px";
-  document.getElementsByTagName("h2")[0].style.fontSize = "18px";
-  document.getElementById("login-form").style.marginTop = "16px";
-}
+  <body>
 
-    const users = {
-      'uniqlo': {
-        'password': '1234',
-        'pageUrl': 'https://uprthailandpps.github.io/kuehne-negel/100486001.html'
-      },
-      'general': {
-        'password': '5678',
-        'pageUrl': 'https://uprthailandpps.github.io/kuehne-negel/100486002.html'
-      },
-    };
-    const loginForm = document.getElementById('login-form');
-    loginForm.addEventListener('submit', function(event) {
-      event.preventDefault(); 
-      const customerCode = document.getElementById('customer-code').value;
-      const password = document.getElementById('password').value;
-      if(users[customerCode] && users[customerCode].password === password) {
-        document.cookie = `loggedInUser=${customerCode}; max-age=1800;`;
-        window.location.href = users[customerCode].pageUrl;
-      } else {
-        alert('Invalid customer code or password');
-      }
-    });
-  </script>
-</body>
+    <iframe src="https://script.google.com/macros/s/AKfycbwq8zR17Wx9quz70u3RcUVQyWKlMNq9SujX9LpISia7J0e60sDSlC_6cYLN87anltXJ/exec" frameborder="0"></iframe>
+
+  </body>
 </html>
