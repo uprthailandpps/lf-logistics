@@ -178,6 +178,14 @@
     //     window.location.href = 'https://uprthailandpps.github.io/lf-logistics/';
     // }
 
+      window.addEventListener('message', function(event) {
+        if (event.data.type === 'fileurl') {
+          var fileurl = event.data.data;
+          // Display the fileurl or use it to create a button/link, etc.
+          console.log('Received fileurl:', fileurl);
+        }
+      });
+      
   </script>
 </body>
 </html>
