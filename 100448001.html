@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse A</title>
+    <style>
+        body {
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+        margin: 0;
+        }
+
+        div {
+        display: inline-block;
+        position: relative;
+        }
+
+        #left {
+        width: 320px;
+        height: 100%;
+        background-color: white;
+        top: 0;
+        left: 0;
+        border-right: 1px solid lightgrey;
+        transition: width 0.5s ease-in-out;
+        }
+
+        #left.hidden {
+        display: none;
+        }
+
+        #div-footer{
+        height: 150px;
+        width: 319px;
+        bottom: 0;
+        left: 0;
+        padding-bottom: 10px;
+        padding-left: 3px;
+        padding-right: 2px;
+        }
+        #div-contact{
+        background-color: white;
+        height: 100px;
+        width: 300px;
+        margin-top: 50px;
+        padding-left: 20px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        }
+        #div-contact p {
+        line-height: 0.3em;
+        text-align: left;
+        vertical-align: bottom;
+        }
+        p{
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 100;
+        color: black;
+        }
+
+        #middle {
+        height: 100%;
+        width: 15px;
+        position: absolute;
+        top: 0;
+        left: 318px;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        #middle.move{
+        left: 0;
+        }
+
+        #toggle {
+        height: 100px;
+        width: 15px;
+        border: 0.5px solid rgb(211, 211, 211);
+        border-radius: 0px 10px 10px 0px;
+        background-color: rgb(105, 105, 105);
+        font-size: 10px;
+        padding: 5px 5px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        }
+
+
+        #toggle:hover {
+        background-color: #FF9800;
+        color: white;
+        }
+
+        #right {
+        width: calc(100% - 320px);
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        transition: opacity 0.5s ease-in-out;
+        }
+
+        #right.expanded {
+        width: 100%;
+        }
+
+        #sheet{
+        position: absolute;
+        top: -24px;
+        height: calc(100% + 60px);
+        width: 100%;
+        }
+        
+/*         .iframe-overlay{
+        width: 35px;
+        height: 35px;
+        background-color: #EDF2FA;
+        position: absolute;
+        z-index: 1;
+        top: 10px;
+        right: 27px;
+        } */
+
+    </style>
+</head>
+
+<body>
+  <div id="left">
+      <img src="refresh form.png" alt="Refresh Button" style="position: absolute; bottom: 20px; right: 40px; cursor: pointer;" onclick="refreshForm()">
+    <iframe id="form" src="https://docs.google.com/forms/d/e/1FAIpQLSfaN39_H_jmtp5uVlPWRLVR_8zmArop4v5EeBFsgd1XSkrAQg/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+  </div>
+  <div id="middle">
+    <button id="toggle">
+    </button>
+  </div>
+  <div id="right">
+    <iframe id="sheet" frameborder="0" scrolling="yes" src="https://docs.google.com/spreadsheets/d/1RY-nzc6uDQsrrHN5J_PrH0NT_aD1cWUA-TPBtEQjms8/edit?usp=sharing&amp;rm=minimal&amp;;widget=false&amp;chrome=false&amp;" allowfullscreen="">
+    </iframe>
+  </div>
+
+  <script>
+    document.body.style.overflow = "hidden";
+    const toggleBtn = document.getElementById("toggle");
+    const leftDiv = document.getElementById("left");
+    const middleDiv = document.getElementById("middle");
+    const rightDiv = document.getElementById("right");
+
+    toggleBtn.addEventListener("click", () => {
+    leftDiv.classList.toggle("hidden");
+    middleDiv.classList.toggle("move");
+    rightDiv.classList.toggle("expanded");
+    });
+
+    if (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                  document.getElementById("right").style.display = "none";
+                  document.getElementById("middle").style.display = "none";
+                  document.getElementById("left").style.width = "100%";
+                }
+  
+    var currentDate = new Date();
+    var formattedDate = currentDate.toISOString().split('T')[0];
+    var prefilledLink = ' https://docs.google.com/forms/d/e/1FAIpQLSfaN39_H_jmtp5uVlPWRLVR_8zmArop4v5EeBFsgd1XSkrAQg/viewform?usp=pp_url&entry.1725689597=' + formattedDate + '&entry.1071237925=Patchara Andaman Distribution&entry.1300212247=%E0%B8%9E%E0%B8%B2%E0%B9%80%E0%B8%A5%E0%B8%97%E0%B9%84%E0%B8%A1%E0%B9%89+4-way';
+    var iframe = document.getElementById('form');
+    iframe.src = prefilledLink;
+      
+    if (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                  document.getElementById("right").style.display = "none";
+                  document.getElementById("middle").style.display = "none";
+                  document.getElementById("left").style.width = "100%";
+                }
+    function refreshForm() {
+    var currentDate = new Date();
+    var formattedDate = currentDate.toISOString().split('T')[0];
+    iframe.src = prefilledLink;
+  }   
+
+  </script>
+</body>
+</html>
